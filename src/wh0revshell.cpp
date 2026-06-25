@@ -1,11 +1,14 @@
 #define WIN32_LEAN_AND_MEAN
 
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include <ws2def.h>
+#include <Windows.h>
+
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
 #include <string_view>
-#include <winsock2.h>
-#include <ws2tcpip.h>
 
 constexpr std::wstring_view CLIENT_IP = L"192.168.1.20";
 constexpr int CLIENT_PORT = 9999;
