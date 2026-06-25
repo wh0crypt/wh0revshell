@@ -1,0 +1,13 @@
+# Temp and config files/dirs
+.vs/
+*.user
+*.suo
+*.db
+
+# Build
+out/
+build/
+x64/
+x86/
+Debug/
+Release/
