@@ -1,15 +1,24 @@
-cmake_minimum_required(VERSION 3.15)
-project(wh0revshell CXX)
+cmake_minimum_required(VERSION 3.20)
+project(wh0loader LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(wh0revshell "src/wh0revshell.cpp")
+add_executable(wh0loader
+    src/wh0loader.cpp
+)
 
-# Explicitly link Windows socket library
-target_link_libraries(wh0revshell PRIVATE ws2_32)
+# Windows libs
+if(WIN32)
+    target_link_libraries(wh0loader PRIVATE ws2_32)
+endif()
 
-# Force Static Linking
-if(MSVC)
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+# Static runtime (GCC MinGW)
+if(MINGW)
+    target_link_options(wh0loader PRIVATE
+        -static
+        -static-libgcc
+        -static-libstdc++
+        -pthread
+    )
 endif()

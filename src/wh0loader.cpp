@@ -3,7 +3,7 @@
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #include <ws2def.h>
-#include <Windows.h>
+#include <windows.h>
 
 #include <cstdlib>
 #include <iostream>
